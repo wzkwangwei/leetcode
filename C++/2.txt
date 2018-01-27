@@ -1,0 +1,185 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode* result,*result2; 
+        //ListNode temp_result(0);
+        int temp_value,crray,temp1, temp2;
+        result = new ListNode(0);
+        result2 = result;
+        crray = 0;
+        while(l1 != NULL || l2 != NULL)
+        {
+            if(l1 != NULL)
+            {
+                temp1 = l1->val;
+            }
+            else
+            {
+                temp1 = 0;
+            }
+            if(l2 != NULL)
+            {
+                temp2 = l2->val;
+            }
+            else
+            {
+                temp2 = 0;
+            }
+            //temp1 = (l1 == NULL)? 0 : l1->val;
+            //temp2 = (l2 == NULL)? 0 : l2->val;
+            temp_value = temp1 + temp2 + crray;
+            crray = 0;
+            if(temp_value >= 10)
+            {
+                temp_value = temp_value % 10;
+                crray = 1;
+            }
+            if(result2 != NULL)
+            {
+                result2->next = new ListNode(temp_value);
+                result2 = result2->next;
+            }
+            if(l1 != NULL)
+            {
+                l1 = l1->next;
+            }
+            if(l2 != NULL)
+            {
+                l2 = l2->next;
+            }
+        }
+        
+        //    if(l1 != NULL && l2 != NULL)
+        //    {
+        //        temp1 = l1->val + l2->val + crray;
+        //            crray = 0;
+        //            if(temp1 >= 10)
+        //            {
+        //                temp1 = temp1 % 10;
+        //                crray = 1;
+        //            }
+        //            if(result2 != NULL)
+        //            {
+        //                result2->next = new ListNode(temp1);
+        //                result2 = result2->next;
+        //            }
+        //            l1 = l1->next;
+        //            l2 = l2->next;
+        //    }
+        //    else if(l1 != NULL || l2 == NULL)
+        //    {
+        //        temp1 = l1->val + crray;
+        //            crray = 0;
+        //            if(temp1 >= 10)
+        //            {
+        //                temp1 = temp1 % 10;
+        //                crray = 1; 
+        //            }
+        //            if(result2 != NULL)
+        //            {
+        //                result2->next = new ListNode(temp1);
+        //                result2 = result2->next;
+        //            } 
+        //            l1 = l1->next;
+        //    }
+        //    else
+        //    {
+        //        temp1 = l2->val + crray;
+        //            crray = 0;
+        //            if(temp1 >= 10)
+        //            {
+        //                temp1 = temp1 % 10;
+        //                crray = 1;
+        //            }
+        //            if(result2 != NULL)
+        //            {
+        //                result2->next = new ListNode(temp1);
+        //                result2 = result2->next;
+        //            } 
+        //            l2 = l2->next;
+        //    }
+        //}
+        if(crray > 0)
+        {
+            if(result2 != NULL)
+            {
+                result2->next = new ListNode(1);
+            } 
+        }
+        return result->next;
+            //if(l1 != NULL)
+            //{
+            //    if(l2 != NULL)
+            //    {
+            //        temp1 = l1->val + l2->val + crray;
+            //        crray = 0;
+            //        if(temp1 >= 10)
+            //        {
+            //            temp1 = temp1 % 10;
+            //            crray = 1;
+            //        }
+            //        if(result2 != NULL)
+            //        {
+            //            result2->next = new ListNode(temp1);
+            //            result2 = result2->next;
+            //        }
+            //        l1 = l1->next;
+            //        l2 = l2->next;
+            //    }
+            //    else
+            //    {
+            //        temp1 = l1->val + crray;
+            //        crray = 0;
+            //        if(temp1 >= 10)
+            //        {
+            //            temp1 = temp1 % 10;
+            //            crray = 1; 
+            //        }
+            //        if(result2 != NULL)
+            //        {
+            //            result2->next = new ListNode(temp1);
+            //            result2 = result2->next;
+            //        } 
+            //        l1 = l1->next;
+            //    }
+            //}
+            //else
+            //{
+            //    if(l2 != NULL)
+            //    {
+            //        temp1 = l2->val + crray;
+            //        crray = 0;
+            //        if(temp1 >= 10)
+            //        {
+            //            temp1 = temp1 % 10;
+            //            crray = 1;
+            //        }
+            //        if(result2 != NULL)
+            //        {
+            //            result2->next = new ListNode(temp1);
+            //            result2 = result2->next;
+            //        } 
+            //        l2 = l2->next;
+            //    }
+            //    else 
+            //    {
+            //        temp1 = 1;
+            //        crray = 0;
+            //        if(result2 != NULL)
+            //        {
+            //            result2->next = new ListNode(temp1);
+            //        } 
+            //    }
+            //}
+        //}
+        //return result->next;
+    }
+};
