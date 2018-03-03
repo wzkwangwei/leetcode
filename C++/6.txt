@@ -1,5 +1,5 @@
-// ZigZag Conversion
-//ÕÒµ½×ª»»¹æÂÉ¼´¿É£¬ÍøÖ·Îªhttp://blog.csdn.net/cshaxu/article/details/12507201
+ï»¿// ZigZag Conversion
+//æ‰¾åˆ°è½¬æ¢è§„å¾‹å³å¯ï¼Œç½‘å€ä¸ºhttp://blog.csdn.net/cshaxu/article/details/12507201
 class Solution {
 public:
     string convert(string s, int numRows) {
