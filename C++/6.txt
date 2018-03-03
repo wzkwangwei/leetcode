@@ -6,11 +6,11 @@ public:
         string result;
         int i, j;
         int total_length = s.length();
-        if(numRows < 2)
+        if(numRows < 2)     //判断需要展开的行数，若为一行，顺序不变
         {
             return s;
         }
-        for(i = 0; i < numRows; i++)
+        for(i = 0; i < numRows; i++)                           //若为多行，搞清楚重复周期，以及中间行多出的部分
         {
             for(j = i; j < total_length; j += 2*numRows - 2)
             {
