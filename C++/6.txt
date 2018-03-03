@@ -1,0 +1,29 @@
+// ZigZag Conversion
+//找到转换规律即可，网址为http://blog.csdn.net/cshaxu/article/details/12507201
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        string result;
+        int i, j;
+        int total_length = s.length();
+        if(numRows < 2)
+        {
+            return s;
+        }
+        for(i = 0; i < numRows; i++)
+        {
+            for(j = i; j < total_length; j += 2*numRows - 2)
+            {
+                result.push_back(s[j]);
+                if(i > 0 && i < numRows - 1)
+                {
+                    if(j + 2*(numRows - 1 - i) < total_length)
+                    {
+                        result.push_back(s[j + 2*(numRows - 1 - i)]);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+};
