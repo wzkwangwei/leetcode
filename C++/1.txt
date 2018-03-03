@@ -1,3 +1,5 @@
+//Two Sum
+//采用map存储已经查找到的数据，以空间换时间
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -9,12 +11,12 @@ public:
         {
             if(index.count(nums[i]) == 0)
             {
-                index.insert(pair<int, int>(target - nums[i],i));
+                index.insert(pair<int, int>(target - nums[i],i));     //若没有查找到第二个数，则以（第二个数，第一个数）为一对插入map
             }
             else
             {
-                result.push_back(index[nums[i]]);
-                result.push_back(i);
+                result.push_back(index[nums[i]]);                     //压入第一个数
+                result.push_back(i);                                  //压入第二个数
             }
         }
         return result;
