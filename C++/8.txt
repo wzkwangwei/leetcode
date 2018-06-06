@@ -1,0 +1,27 @@
+﻿//String to Integer (atoi)
+class Solution {
+public:
+    int myAtoi(string str) {
+        int result;
+        if(str.empty())                                //先判断是否为空字符串
+        {
+            return 0;
+        }
+        int sign = 1, base = 0, i = 0, n = str.size();  
+        while(i < n && str[i] == ' ')                 //字符串前面的空格不要
+            i++;
+        if(str[i] == '+' || str[i] == '-')           //判断数据的符号
+        {
+            sign = (str[i++] == '+' ? 1 : -1);
+        }
+        while(i < n && str[i] >= '0' && str[i] <= '9')       //只考虑在0-9以内的字母表示的数据
+        {
+            if(base > INT_MAX/10 || (base == INT_MAX/10 && str[i] > '7'))  //如果加上当前的数据，判断是否会溢出整数的表示范围
+            {
+                return sign == 1 ? INT_MAX : INT_MIN;
+            }
+            base = base * 10 + str[i++] - '0'; 
+        }
+        return base * sign;
+    }
+};
