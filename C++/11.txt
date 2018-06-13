@@ -1,0 +1,26 @@
+#include <math>
+#include <algorithm>
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int result = 0;
+        vector<int>::iterator iter_begin = height.begin();
+        vector<int>::iterator iter_end = height.end() - 1;
+        int length = height.size() - 1;
+        while(iter_begin != iter_end)
+        {
+            //result = length * min(*iter_end,*iter_begin);
+            result = max(result,length * min(*iter_end,*iter_begin));
+            length --;
+            if(*iter_begin < *iter_end)
+            {
+                iter_begin++;
+            }
+            else
+            {
+                iter_end--;
+            }
+        }
+        return result;
+    }
+};
