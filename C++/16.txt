@@ -1,0 +1,39 @@
+#include<algorithm>
+#include<math>
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target) {
+        int different = INT_MAX;
+        int perDifferent = INT_MAX;
+        int res = 0;
+        int sum = 0;
+        int length = nums.size();
+        sort(nums.begin(),nums.end());
+        for(int i = 0; i < length - 2; i++)              //注意终止条件(i < length - 2)
+        {
+            int sum = target - nums[i];
+            for(int j = i+1, k = length - 1; j < k;)
+            {
+                different = abs(sum - nums[j] - nums[k]); //求得与目标值之间的差距
+                if(different < perDifferent)              //将本次目标与上次目标相比较决定是否记录此时的和
+                {
+                    res = nums[i] + nums[j] + nums[k];
+                    perDifferent = different;
+                }
+                if(nums[j] + nums[k] == sum)              //若有三个数的和等于目标值，则直接返回目标值
+                {
+                    return target;
+                }
+                else if(nums[j] + nums[k] < sum)          //根据和与目标值之间的大小关系决定应该往哪个方向移动
+                { 
+                    j++;
+                }
+                else 
+                {  
+                    k--;
+                }
+            }
+        }
+        return res;
+    }
+};
