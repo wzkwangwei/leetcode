@@ -1,0 +1,29 @@
+//计算字符串最后一个单词的长度
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    string inputStr = "";
+    //cin >> inputStr;
+    getline(cin,inputStr);
+    int size = inputStr.size();
+    int result = 0;
+    int i = size - 1;
+    bool flag = false;
+    //while (inputStr[i] != ' ')
+    for(; i >= 0; i--)            //从末尾开始检测，若一直是空白，则忽略不计
+    {
+        if(inputStr[i] != ' ')    //注意一种情况（末尾有很多空白时，加入flag进行判断）
+        {
+            flag = true;
+            result++;
+        }
+        else if(flag == true)   
+        {
+            break;
+        }
+    }
+    cout << result;
+    return 0;
+}

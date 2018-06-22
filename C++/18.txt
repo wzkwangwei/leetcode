@@ -1,0 +1,50 @@
+//4Sum
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        vector<vector<int>> result;
+        int size = nums.size();
+        if(size < 4)
+        {
+            return result;
+        }
+        
+        map<int, vector<pair<int, int> > > recodeMap;
+        sort(nums.begin(), nums.end());                    //进行排序
+        for(int i = 0; i < size - 1; i++)
+        {
+            for(int j = i+1; j < size; j++)
+            {
+                recodeMap[nums[i] + nums[j]].push_back(pair<int, int>(i, j)); //采用map存储两个数的和
+            }
+        }
+        
+        for(int i = 0; i < size - 3; i++)
+        {
+            if(nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3] > target)
+            {
+                break;
+            }
+            for(int j = i+1; j < size - 2; j++)
+            {
+                int target_temp = target - nums[i] - nums[j];
+                if(recodeMap.find(target_temp) != recodeMap.end())    //进行查找，存储在map中的和能否和目前的两数组成目标和
+                {
+                    vector<pair<int, int>> tempVector;
+                    tempVector = recodeMap[target_temp];
+                    for(int k = 0; k < tempVector.size(); k++)        //依次遍历满足条件的vextor中的值
+                    {
+                        if(j < tempVector[k].first)                   //判断当前的组合顺序是依次增大才行，否则会重复
+                        {
+                            vector<int> temp{nums[i],nums[j],nums[tempVector[k].first],nums[tempVector[k].second]};
+                            result.push_back(temp);                  //存储满足条件的集合
+                        }
+                    }
+                }
+            }
+        }
+        sort(result.begin(), result.end());     
+        result.erase(unique(result.begin(), result.end()), result.end());   //差除掉存储向量中重复的部分
+        return result;
+    }
+};

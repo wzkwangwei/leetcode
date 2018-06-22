@@ -1,0 +1,34 @@
+//接受一个有字母和数字以及空格组成的字符串，和一个字符，然后输出输入字符串中含有该字符的个数。不区分大小写
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    string inputStr;
+    char inputChar, lowerChar, upperChar;
+    cin >> inputStr;
+    cin >> inputChar;
+    if(inputChar >= 65 && inputChar <= 90)   //得到输入字符的大写与小写
+    {
+        upperChar = inputChar;
+        lowerChar = tolower(inputChar);
+    }
+    else if(inputChar >= 97 && inputChar <= 122)
+    {
+        lowerChar = inputChar;
+        upperChar = toupper(inputChar);
+    }
+    
+    int size = inputStr.size();
+    int result = 0;
+    for(int i = 0; i < size; i++)
+    {
+        if(inputStr[i] == lowerChar || inputStr[i] == upperChar)      //依次比较得到结果
+        {
+            result++;
+        }
+    }
+    cout << result;
+    return 0;
+}
